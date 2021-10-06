@@ -214,11 +214,11 @@ RUBCN=False
 ##COMPLEXES and PROTEINS RULES IN SYSTEM 
 ESXH*=MTB 
 ESXG*=MTB 
-NDKA*=MTB and not offswitch 
+NDKA*=MTB and not offswitch           #'offswitch' is used for turning specific tb protein in system#
 RV2074*=MTB 
 SAPM*=MTB and not offswitch
 
-#COMPLEXES and MISC
+#COMPLEXES and MISC equations#
 
 #
 ENDOCYTOSIS_VESICLE_STAGE_1*= CLTC and AP-2_COMPLEX or ENDOCYTOSIS_VESICLE_STAGE_6 and CLTC
@@ -307,15 +307,6 @@ VCP*=SVIP and ASPSCR1 and not RV2074 or SVIP and not UBXN6  and not NSFL1C and n
 
 
 
-
-
-
-
-#REMAINING PROTEINS IN NETWorK
-
-
-
-
 """
     
 model = b2.Model(text=model_definition, mode='sync')
@@ -332,3 +323,18 @@ plt.imshow(image, cmap=plt.cm.get_cmap('RdYlGn'), interpolation='none')
     
 for node in model.data:
     print node, model.data[node]
+
+##Output for summary table##
+
+image2 = list()
+ticks = list()
+for node in model.data:
+    if ( node =="ESCRT-III"  or node =="RAB7COMPLEX" or node =="Autophagosome_formation"  or node =="LYSOSOME_VESICLE_STAGE_3" or node =="FC_GAMMA_PHAGOCYTOSIS" ):
+        print avgs[node]
+        print node
+        ticks.append(node)        
+        image2.append(avgs[node])
+plt.yticks(range(0,15), ticks)
+plt.imshow(image2, cmap=plt.cm.get_cmap('RdYlGn'), interpolation='none')
+
+plt.savefig('Hitcomplexes.pdf')
