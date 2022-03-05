@@ -1,0 +1,64 @@
+﻿reaction,node1,node2,interaction
+Vamp And trans-Golgi Network AP-1 Binding Coupled With Cargo Capture On Lysosome Vesicle Destined Golgi Membrane,Lysosome Destined Cargo,Lysosome Destined Cargo:AP-1:Arf1-GTP:beta-Arrestin-1:Vamp Complex,+
+Vamp And trans-Golgi Network AP-1 Binding Coupled With Cargo Capture On Lysosome Vesicle Destined Golgi Membrane,Vamp,Lysosome Destined Cargo:AP-1:Arf1-GTP:beta-Arrestin-1:Vamp Complex,+
+Vamp And trans-Golgi Network AP-1 Binding Coupled With Cargo Capture On Lysosome Vesicle Destined Golgi Membrane,Lysosome Destined Cargo,Lysosome Destined Cargo:AP-1:Arf1-GTP:beta-Arrestin-1:Vamp Complex,+
+Vamp And trans-Golgi Network AP-1 Binding Coupled With Cargo Capture On Lysosome Vesicle Destined Golgi Membrane,ARRB1,Lysosome Destined Cargo:AP-1:Arf1-GTP:beta-Arrestin-1:Vamp Complex,+
+Vamp And trans-Golgi Network AP-1 Binding Coupled With Cargo Capture On Lysosome Vesicle Destined Golgi Membrane,Arf1-GTP,Lysosome Destined Cargo:AP-1:Arf1-GTP:beta-Arrestin-1:Vamp Complex,+
+Vamp And trans-Golgi Network AP-1 Binding Coupled With Cargo Capture On Lysosome Vesicle Destined Golgi Membrane,AP-1 Complex,Lysosome Destined Cargo:AP-1:Arf1-GTP:beta-Arrestin-1:Vamp Complex,+
+trans-Golgi Network Lysosome Vesicle Destined Membrane Coat Assembly,Clathrin Triskelion,Lysosome Destined Cargo:AP-1:Beta-arrestin:Vamp:Clathrin Triskelion:Dynamin:Endophilin Complex,+
+trans-Golgi Network Lysosome Vesicle Destined Membrane Coat Assembly,SH3GL2,Lysosome Destined Cargo:AP-1:Beta-arrestin:Vamp:Clathrin Triskelion:Dynamin:Endophilin Complex,+
+trans-Golgi Network Lysosome Vesicle Destined Membrane Coat Assembly,Lysosome Destined Cargo:AP-1:Arf1-GTP:beta-Arrestin-1:Vamp Complex,Lysosome Destined Cargo:AP-1:Beta-arrestin:Vamp:Clathrin Triskelion:Dynamin:Endophilin Complex,+
+trans-Golgi Network Lysosome Vesicle Destined Membrane Coat Assembly,DNM2,Lysosome Destined Cargo:AP-1:Beta-arrestin:Vamp:Clathrin Triskelion:Dynamin:Endophilin Complex,+
+trans-Golgi Network Lysosome Vesicle Destined Membrane Coat Assembly,Clathrin Triskelion,Arf1-GDP,+
+trans-Golgi Network Lysosome Vesicle Destined Membrane Coat Assembly,SH3GL2,Arf1-GDP,+
+trans-Golgi Network Lysosome Vesicle Destined Membrane Coat Assembly,Lysosome Destined Cargo:AP-1:Arf1-GTP:beta-Arrestin-1:Vamp Complex,Arf1-GDP,+
+trans-Golgi Network Lysosome Vesicle Destined Membrane Coat Assembly,DNM2,Arf1-GDP,+
+trans-Golgi Network Lysosome Vesicle Destined Membrane Coat Assembly,Clathrin Triskelion,Pi,+
+trans-Golgi Network Lysosome Vesicle Destined Membrane Coat Assembly,SH3GL2,Pi,+
+trans-Golgi Network Lysosome Vesicle Destined Membrane Coat Assembly,Lysosome Destined Cargo:AP-1:Arf1-GTP:beta-Arrestin-1:Vamp Complex,Pi,+
+trans-Golgi Network Lysosome Vesicle Destined Membrane Coat Assembly,DNM2,SH3GL2,+
+trans-Golgi Network Lysosomal Vesicle Scission,Lysosome Destined Cargo:AP-1:Beta-arrestin:Vamp:Clathrin Triskelion:Dynamin:Endophilin Complex,SH3GL2,+
+trans-Golgi Network Lysosomal Vesicle Scission,GTP,SH3GL2,+
+trans-Golgi Network Lysosomal Vesicle Scission,Lysosome Destined Cargo:AP-1:Beta-arrestin:Vamp:Clathrin Triskelion:Dynamin:Endophilin Complex,DNM2,+
+trans-Golgi Network Lysosomal Vesicle Scission,GTP,DNM2,+
+trans-Golgi Network Lysosomal Vesicle Scission,Lysosome Destined Cargo:AP-1:Beta-arrestin:Vamp:Clathrin Triskelion:Dynamin:Endophilin Complex,GDP,+
+trans-Golgi Network Lysosomal Vesicle Scission,GTP,GDP,+
+trans-Golgi Network Lysosomal Vesicle Scission,Lysosome Destined Cargo:AP-1:Beta-arrestin:Vamp:Clathrin Triskelion:Dynamin:Endophilin Complex,Lysosome Cargo:AP-1:Beta-arrestin:Clathrin Triskelion:Vamp Complex,+
+trans-Golgi Network Lysosomal Vesicle Scission,GTP,Lysosome Cargo:AP-1:Beta-arrestin:Clathrin Triskelion:Vamp Complex,+
+trans-Golgi Network Lysosomal Vesicle Scission,Lysosome Destined Cargo:AP-1:Beta-arrestin:Vamp:Clathrin Triskelion:Dynamin:Endophilin Complex,Pi,+
+trans-Golgi Network Lysosomal Vesicle Scission,GTP,Pi,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,HSC70:Auxillin Complex,HSC70:Auxillin Complex,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,ATP,HSC70:Auxillin Complex,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,Lysosome Cargo:AP-1:Beta-arrestin:Clathrin Triskelion:Vamp Complex,HSC70:Auxillin Complex,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,HSC70:Auxillin Complex,Lysosome Cargo,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,ATP,Lysosome Cargo,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,Lysosome Cargo:AP-1:Beta-arrestin:Clathrin Triskelion:Vamp Complex,Lysosome Cargo,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,HSC70:Auxillin Complex,Lysosome Cargo,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,ATP,Lysosome Cargo,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,Lysosome Cargo:AP-1:Beta-arrestin:Clathrin Triskelion:Vamp Complex,Lysosome Cargo,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,HSC70:Auxillin Complex,ARRB1,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,ATP,ARRB1,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,Lysosome Cargo:AP-1:Beta-arrestin:Clathrin Triskelion:Vamp Complex,ARRB1,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,HSC70:Auxillin Complex,Clathrin Triskelion,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,ATP,Clathrin Triskelion,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,Lysosome Cargo:AP-1:Beta-arrestin:Clathrin Triskelion:Vamp Complex,Clathrin Triskelion,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,HSC70:Auxillin Complex,ADP,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,ATP,ADP,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,Lysosome Cargo:AP-1:Beta-arrestin:Clathrin Triskelion:Vamp Complex,ADP,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,HSC70:Auxillin Complex,AP-1 Complex,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,ATP,AP-1 Complex,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,Lysosome Cargo:AP-1:Beta-arrestin:Clathrin Triskelion:Vamp Complex,AP-1 Complex,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,HSC70:Auxillin Complex,Pi,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,ATP,Pi,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,Lysosome Cargo:AP-1:Beta-arrestin:Clathrin Triskelion:Vamp Complex,Pi,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,HSC70:Auxillin Complex,Vamp,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,ATP,Vamp,+
+trans-Golgi Network Derived Lysosomal Vesicle Uncoating,Lysosome Cargo:AP-1:Beta-arrestin:Clathrin Triskelion:Vamp Complex,Vamp,+
+AP4 binds APP,AP4,AP4:APP,+
+AP4 binds APP,APP(18-770),AP4:APP,+
+AP4 transports APP from trans-Golgi network to endosome lumen,AP4:APP,AP4:APP,+
+AP1G2 binds HGS and CHMP2A,CHMP2A,AP1G2:HGS:CHMP2A,+
+AP1G2 binds HGS and CHMP2A,AP1G2,AP1G2:HGS:CHMP2A,+
+AP1G2 binds HGS and CHMP2A,HGS,AP1G2:HGS:CHMP2A,+
+"CLAT:AP1:CLVS bind PI(3,5)P2",CLAT:AP1:CLVS,"CLAT:AP1:CLVS:PI(3,5)P2",+
+"CLAT:AP1:CLVS bind PI(3,5)P3","PI(3,5)P2","CLAT:AP1:CLVS:PI(3,5)P2",+
