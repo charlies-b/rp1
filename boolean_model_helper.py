@@ -61,25 +61,37 @@ def plot_nodes(model, nodes, w=10, h=32): # plot node states
     plt.gcf().set_size_inches(w, h)
 
 
-# In[150]:
+def knockout(definition, knockouts=[]):
+    assert isinstance(knockouts, list), "takes list"
+    new_definition = definition.split('\n')
+    for knockout in knockouts:
+        for i, line in enumerate(new_definition):
+            if line.startswith(knockout):
+                new_definition[i] = '#'+line # comment initialisation and rule
+                continue
+        new_definition.insert(1,knockout + ' = False #knockout') # make off
+    return '\n'.join(new_definition)
+        
+def switch(definition, on=[], off=[]):
+    assert isinstance(on, list), "takes list"
+    assert isinstance(off, list), "takes list"
+    
+    new_definition = definition.split('\n')
+    for node in on+off:
+        for i, line in enumerate(new_definition):
+            if line.startswith(node + ' ='): # initialisation NOT rule *=
+                if node in on and node not in off:
+                    new_definition[i] = node +' = True' # switch on
+                if node in off and node not in on:
+                    new_definition[i] = node +' = False' # switch off
+                continue
+    return '\n'.join(new_definition)
+        
+        
+        
 
 
-definition = string2definition('string-network-1.csv', 'True') 
 
-
-# In[151]:
-
-
-model = run_model(definition)
-
-
-# In[152]:
-
-
-plot_model(model)
-
-
-# In[ ]:
 
 
 

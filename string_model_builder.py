@@ -76,12 +76,6 @@ fp.close()
 inp = file('model.txt').read()
 
 
-# In[14]:
-
-
-print(inp)
-
-
 # In[34]:
 
 
@@ -103,7 +97,7 @@ def string2definition(tabular_text_output, initial_node_value, out='model.txt'):
     rules = []
     for key, value in node_inputs.items():
         rule = key + ' *= '
-        rule = rule + ' and '.join(value)
+        rule = rule + ' or '.join(value)
         rules.append(rule)
         
     # construct initial conditions
