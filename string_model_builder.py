@@ -46,7 +46,7 @@ for node in nodes:
 rules = []
 for key, value in node_inputs.items():
     rule = key + ' *= '
-    rule = rule + ' and '.join(value)
+    rule = rule + ' or '.join(value)
     rules.append(rule)
 
 
