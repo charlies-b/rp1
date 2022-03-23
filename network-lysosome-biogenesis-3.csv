@@ -91,3 +91,9 @@ Complex,Clathrin light chain,Clathrin Triskelion,+
 Complex,HSPA8,HSC70:Auxillin Complex,+
 Complex,DNAJC6,HSC70:Auxillin Complex,+
 Complex,ARF1,Arf1-GDP,+
+Cargo,CTSZ,Lysosome Cargo,+
+Cargo,DNASE2,Lysosome Cargo,+
+Cargo,TXNDC5,Lysosome Cargo,+
+Cargo,GNS,Lysosome Cargo,+
+Cargo,M6PR,Lysosome Cargo,+
+Cargo,BLOC1S1,Lysosome Cargo,+
