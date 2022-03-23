@@ -1,39 +1,25 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[128]:
-
-
 import warnings
 warnings.filterwarnings("ignore")
 import boolean2 as b2
 import matplotlib.pyplot as plt
-from string_model_builder import string2definition
 from numpy.ma import masked_equal
 from matplotlib.colors import ListedColormap
 
-
-# In[148]:
-
-
-# model helper functions
-# initialise any loose nodes
-def missing( node_name ):
+def missing( node_name ): # initialise any loose nodes True
     return True
 
 def run_model(definition, steps=15, mode='sync'): # run model under settings
     model = b2.Model(text=definition, mode=mode)
-    model.initialize( missing=missing ) # initialise any loose nodes to true
+    model.initialize( missing=missing ) # initialise any loose nodes
     model.iterate(steps=steps)
     return model
     
 def print_model(model): # print node states
     for node in model.data:
         print node, model.data[node]
-
-
-# In[149]:
-
 
 cmap = ListedColormap(['green'])
 cmap.set_bad('red')
@@ -51,7 +37,8 @@ def plot_model(model, w=10, h=32): # plot node states
 
 def plot_nodes(model, nodes, w=10, h=32): # plot node states 
     data = []
-    labels = sorted(nodes) # nodes sorted alphabetically
+#     labels = sorted(nodes) # nodes sorted alphabetically
+    labels = nodes 
     for label in labels:
         data.append(model.data[label])
         
@@ -86,13 +73,4 @@ def switch(definition, on=[], off=[]):
                     new_definition[i] = node +' = False' # switch off
                 continue
     return '\n'.join(new_definition)
-        
-        
-        
-
-
-
-
-
-
-
+      
