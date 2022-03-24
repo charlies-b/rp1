@@ -105,7 +105,7 @@ def string2definition2(tabular_text_output, complexes, initial_value):
     return definition
         
 
-def add_process_edgelist(definition, edgelist, initial_process_value):
+def add_process_edgelist1(definition, edgelist, initial_process_value):
     df = pd.read_csv(edgelist)
     
     # get list of nodes
@@ -132,6 +132,48 @@ def add_process_edgelist(definition, edgelist, initial_process_value):
         
     # definition
     return definition + '\n\n#process node initial conditions\n'+'\n'.join(initial_conditions)+'\n\n#process node rules\n'+'\n'.join(rules)
+
+def add_process_edgelist2(definition, edgelist, complexes, initial_value):
+    df = pd.read_csv(edgelist)
+    
+    # get list of nodes
+    nodes = df.process.unique()
+
+    # build dict of node inputs
+    node_inputs = {}
+    for node in nodes:
+        inputs = list(df[df.process == node].node)
+        node_inputs[node] = inputs
+    
+    # get list of complexes 
+    complexes = list(df_complexes.complex.unique())
+
+    # build dict of complexes
+    complex_inputs = {}
+    for complex in complexes:
+        inputs = list(df_complexes[df_complexes.complex == complex].node)
+        complex_inputs[complex] = inputs
+    
+    # reduce complexes
+    node_inputs = reduce_complexes(node_inputs, complex_inputs)
+    
+    # construct boolean rules as list
+    rules = []
+    for key, value in node_inputs.items():
+        rule = key + ' *= '
+        rule = rule + ' and '.join(value)
+        rules.append(rule)
+        
+    # initial conditions
+    initial_value = 'True' if initial_value else 'False'
+    initial_conditions = []
+    for node in (nodes):
+        initial_condition = node + ' = ' + initial_value
+        initial_conditions.append(initial_condition)
+        
+    # definition
+    return definition + '\n\n#process node initial conditions\n'+'\n'.join(initial_conditions)+'\n\n#process node rules\n'+'\n'.join(rules)
+
 
 def add_mtb_edgelist(definition, edgelist, initial_mtb_value):
     df = pd.read_csv(edgelist)
