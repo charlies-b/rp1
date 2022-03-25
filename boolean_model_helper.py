@@ -34,10 +34,10 @@ def plot_model(model, w=10, h=32): # plot node states
     plt.yticks(range(0, len(labels)), labels)
     plt.imshow(masked_equal(data, 0), cmap= cmap)
     plt.gcf().set_size_inches(w, h)
+    plt.show()
 
 def plot_nodes(model, nodes, w=10, h=32): # plot node states 
     data = []
-#     labels = sorted(nodes) # nodes sorted alphabetically
     labels = nodes 
     for label in labels:
         data.append(model.data[label])
@@ -46,7 +46,7 @@ def plot_nodes(model, nodes, w=10, h=32): # plot node states
     plt.yticks(range(0, len(labels)), labels)
     plt.imshow(masked_equal(data, 0), cmap= cmap)
     plt.gcf().set_size_inches(w, h)
-
+    plt.show()
 
 def knockout(definition, knockouts=[]):
     assert isinstance(knockouts, list), "takes list"
@@ -66,7 +66,7 @@ def switch(definition, on=[], off=[]):
     new_definition = definition.split('\n')
     for node in on+off:
         for i, line in enumerate(new_definition):
-            if line.startswith(node + ' ='): # initialisation NOT rule *=
+            if line.startswith(node + ' ='): # initialisation NOT rule '*='
                 if node in on and node not in off:
                     new_definition[i] = node +' = True' # switch on
                 if node in off and node not in on:
