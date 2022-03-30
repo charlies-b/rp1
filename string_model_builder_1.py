@@ -1,6 +1,6 @@
 import pandas as pd 
 
-def string2definition(tabular_text_output, initial_value):
+def string2definition(tabular_text_output, initial_value=True):
     """
     model 1
     """
@@ -38,11 +38,11 @@ def string2definition(tabular_text_output, initial_value):
         '\n'.join(rules)
     )        
 
-def add_process_edgelist(definition, edgelist, initial_value):
+def add_processes2definition(definition, process_edgelist, initial_value=True):
     """
     model 1
     """
-    df = pd.read_csv(edgelist)
+    df = pd.read_csv(process_edgelist)
     
     # get list of nodes
     nodes = df.process.unique()
@@ -76,14 +76,14 @@ def add_process_edgelist(definition, edgelist, initial_value):
     return (
         definition + 
         '\n\n'+
-        '#process node initial conditions\n'+
+        '#processes\n'+
         '\n'.join(initial_conditions)+
         '\n\n'+
-        '#process node rules\n'+
+        '#process rules\n'+
         '\n'.join(rules)
     )
 
-def add_mtb_edgelist(definition, mtb_edgelist, initial_value):
+def add_mtb2definition(definition, mtb_edgelist, initial_value=False):
     """
     model 1
     """
@@ -125,10 +125,10 @@ def add_mtb_edgelist(definition, mtb_edgelist, initial_value):
     return (
         definition + 
         '\n\n'+
-        '#mtb node initial conditions\n'+
+        '#mtb\n'+
         '\n'.join(initial_conditions)+
         '\n\n'+
-        '#mtb update rules\n'+
+        '#mtb rules\n'+
         '\n'.join(rules)
     )
 
