@@ -7,7 +7,6 @@ Phagosome_acidification,ATP6V1E1
 Phagosome_acidification,ATP6V1F
 Phagosome_acidification,ATP6V1G1
 Phagosome_acidification,ATP6V1H
-Phagosome_maturation,CORO1A
 Phagosome_maturation,RAB7A
 Phagosome_maturation,ATP6V1A
 Phagosome_maturation,ATP6V1B2
@@ -16,5 +15,4 @@ Phagosome_maturation,ATP6V1E1
 Phagosome_maturation,ATP6V1F
 Phagosome_maturation,ATP6V1G1
 Phagosome_maturation,ATP6V1H
-Phagolysosome_assembly,CORO1A
 Phagolysosome_assembly,RAB7A
