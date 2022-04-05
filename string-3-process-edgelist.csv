@@ -1,0 +1,10 @@
+﻿process,node
+Phagosome_acidification,RAB7A
+Phagosome_acidification,vATPase_complexes
+Phagosome_acidification,MHCI_complexes
+Phagosome_acidification,Phagolysosome_assembly
+Phagosome_maturation,Phagosome_acidification
+Phagosome_maturation,Phagolysosome_assembly
+Phagolysosome_assembly,RAB7A
+Phagolysosome_assembly,ESCRT_complexes
+Phagolysosome_assembly,MHCI_complexes

@@ -1,0 +1,92 @@
+#initial conditions
+AP1B1 = True
+ASPSCR1 = True
+ATP6V1A = True
+ATP6V1B2 = True
+ATP6V1D = True
+ATP6V1E1 = True
+ATP6V1F = True
+ATP6V1G1 = True
+ATP6V1H = True
+B2M = True
+CALR = True
+CD1B = True
+CD1D = True
+CD8A = True
+CHMP2A = True
+CHMP2B = True
+CHMP3 = True
+CHMP4B = True
+CLVS2 = True
+DERL1 = True
+GGA1 = True
+HGS = True
+HIP1R = True
+HLA-A = True
+HLA-B = True
+HLA-C = True
+HLA-E = True
+HLA-G = True
+KLRC1 = True
+KLRD1 = True
+KPNA1 = True
+KPNA2 = True
+KPNB1 = True
+NSFL1C = True
+NUTF2 = True
+RAB5A = True
+RAB7A = True
+RAN = True
+STAM = True
+TSG101 = True
+UBXN7 = True
+UFD1L = True
+VCP = True
+VPS33B = True
+XPO1 = True
+XPO5 = True
+ESCRT_complexes = True
+MHC_I_complexes = True
+vATPase_complexes = True
+ImportinBetaAlpha_complexes = True
+
+#rules
+vATPase_complexes *= ATP6V1F and ATP6V1B2 and ATP6V1A and ATP6V1G1 and ATP6V1D and ATP6V1E1 and ATP6V1H
+ESCRT_complexes *= HGS and CHMP2A and CHMP4B and CHMP2B and CHMP3 and STAM and TSG101
+MHC_I_complexes *= B2M and HLA-C and HLA-B and HLA-G and HLA-E and CD8A and CALR and HLA-A
+ImportinBetaAlpha_complexes *= KPNA1 and KPNA2 and KPNB1 and RAN and NUTF2
+
+ESCRT_complexes *= ESCRT_complexes or XPO1 or RAB7A or HIP1R
+MHC_I_complexes *= MHC_I_complexes or KLRC1 or CD1D or KLRD1 or ImportinBetaAlpha_complexes or VCP or DERL1 or CD1B
+ImportinBetaAlpha_complexes *= ImportinBetaAlpha_complexes or XPO1 or MHC_I_complexes or XPO5
+vATPase_complexes *= vATPase_complexes or UBXN7
+
+CD1D *= MHC_I_complexes or CD1B
+CD1B *= CD1D or MHC_I_complexes
+KLRD1 *= KLRC1 or MHC_I_complexes
+HIP1R *= AP1B1 or ESCRT_complexes
+XPO1 *= ESCRT_complexes or ImportinBetaAlpha_complexes
+XPO5 *= ImportinBetaAlpha_complexes
+VPS33B *= UFD1L
+DERL1 *= VCP or MHC_I_complexes
+NSFL1C *= VCP or ASPSCR1 or UBXN7 or UFD1L
+AP1B1 *= CLVS2 or HIP1R
+UBXN7 *= VCP or ASPSCR1 or vATPase_complexes or UFD1L or NSFL1C
+KLRC1 *= MHC_I_complexes or KLRD1
+RAB7A *= ESCRT_complexes or RAB5A
+RAB5A *= GGA1 or RAB7A
+VCP *= ASPSCR1 or MHC_I_complexes or DERL1 or NSFL1C or UBXN7 or UFD1L
+GGA1 *= RAB5A
+ASPSCR1 *= VCP or UBXN7 or UFD1L or NSFL1C
+UFD1L *= VCP or VPS33B or ASPSCR1 or UBXN7 or NSFL1C
+CLVS2 *= AP1B1
+
+#processes
+Phagosome_acidification = True
+Phagosome_maturation = True
+Phagolysosome_assembly = True
+
+#process rules
+Phagosome_acidification *= RAB7A and vATPase_complexes and MHC_I_complexes and Phagolysosome_assembly
+Phagolysosome_assembly *= RAB7A and ESCRT_complexes and MHC_I_complexes
+Phagosome_maturation *= Phagolysosome_assembly and Phagosome_acidification
