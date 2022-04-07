@@ -7,6 +7,7 @@ import boolean2 as b2
 import matplotlib.pyplot as plt
 from numpy.ma import masked_equal
 from matplotlib.colors import ListedColormap
+plt.rcParams.update({'font.size': 22})
 
 def missing( node_name ): # initialise any loose nodes True
     return True
@@ -19,13 +20,14 @@ def run_model(definition, runs=1, steps=15, mode='sync'): # returns array of mod
         model.initialize( missing=missing ) # initialise any loose nodes to true
         model.iterate(steps=steps)
         models.append(model)
-    return models
+    return model if runs==1 else models
     
 def print_model(model): # print node states
     for node in model.data:
         print node, model.data[node]
         
-def plot_model(model, nodes=None, w=10, h=32): # plot node states    
+def plot_model(model, nodes=None, w=10, h=32, fontsize=12): # plot node states 
+    
     # get data from model
     data = []
     labels = sorted(model.data.keys()) if not nodes else nodes # sort alphabetically, or a list of ordered nodes
@@ -33,10 +35,12 @@ def plot_model(model, nodes=None, w=10, h=32): # plot node states
         data.append(model.data[label])
         
     # plot figure
+    plt.rcParams.update({'font.size': fontsize})
+    plt.rcParams['figure.figsize'] = [w, h]
     cmap=plt.cm.get_cmap('gray') # off (0) = black, on (1) = white
     plt.yticks(range(0, len(labels)), labels)
     plt.imshow(data, cmap=cmap)
-    plt.gcf().set_size_inches(w, h)
+    plt.show()
 
 class DummyModel: # dummy model with data attribute
     def __init__(self, data):
