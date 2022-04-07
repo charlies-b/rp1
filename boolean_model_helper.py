@@ -11,42 +11,47 @@ from matplotlib.colors import ListedColormap
 def missing( node_name ): # initialise any loose nodes True
     return True
 
-def run_model(definition, steps=15, mode='sync'): # run model under settings
-    model = b2.Model(text=definition, mode=mode)
-    model.initialize( missing=missing ) # initialise any loose nodes
-    model.iterate(steps=steps)
-    return model
+def run_model(definition, runs=1, steps=15, mode='sync'): # returns array of models of length runs  
+    models = []
+    for i in range(runs):
+        # run model under settings
+        model = b2.Model(text=definition, mode=mode)
+        model.initialize( missing=missing ) # initialise any loose nodes to true
+        model.iterate(steps=steps)
+        models.append(model)
+    return models
     
 def print_model(model): # print node states
     for node in model.data:
         print node, model.data[node]
-
-cmap = ListedColormap(['green'])
-cmap.set_bad('red')
-
-def plot_model(model, w=10, h=32): # plot node states 
+        
+def plot_model(model, nodes=None, w=10, h=32): # plot node states    
+    # get data from model
     data = []
-    labels = sorted(model.data.keys()) # nodes sorted alphabetically
+    labels = sorted(model.data.keys()) if not nodes else nodes # sort alphabetically, or a list of ordered nodes
     for label in labels:
         data.append(model.data[label])
         
-    # figure
+    # plot figure
+    cmap=plt.cm.get_cmap('gray') # off (0) = black, on (1) = white
     plt.yticks(range(0, len(labels)), labels)
-    plt.imshow(masked_equal(data, 0), cmap= cmap)
+    plt.imshow(data, cmap=cmap)
     plt.gcf().set_size_inches(w, h)
-    plt.show()
 
-def plot_nodes(model, nodes, w=10, h=32): # plot node states 
-    data = []
-    labels = nodes 
-    for label in labels:
-        data.append(model.data[label])
+class DummyModel: # dummy model with data attribute
+    def __init__(self, data):
+        self.data = data
         
-    # figure
-    plt.yticks(range(0, len(labels)), labels)
-    plt.imshow(masked_equal(data, 0), cmap= cmap)
-    plt.gcf().set_size_inches(w, h)
-    plt.show()
+def plot_average(models, nodes = None, w=10, h=32):
+    # collect models into average (from booleannet docs)
+    coll = b2.util.Collector()
+    for model in models:
+        coll.collect(states = model.states, nodes=model.nodes)
+    avgs = coll.get_averages()   
+    
+    # plot average model
+    avg_model = DummyModel(avgs) # so it can be passed to plot_model plain
+    plot_model(avg_model, nodes=nodes, w=w, h=h)
 
 def knockout(definition, knockouts=[]):
     assert isinstance(knockouts, list), "takes list"
