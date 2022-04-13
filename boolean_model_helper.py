@@ -4,11 +4,13 @@
 import warnings
 warnings.filterwarnings("ignore")
 import boolean2 as b2
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import string_model_builder_3 as builder
 from numpy.ma import masked_equal
 import numpy as np
 from mpl_toolkits.axes_grid1.axes_divider import make_axes_locatable
+
 
 def missing( node_name ): # initialise any loose nodes True
     return True
@@ -49,7 +51,7 @@ def count_cycles(cycles):
         if cycle[1] == 0: none+=1
         elif cycle[1] == 1: steady+=1
         else: other+=1
-    return (none, steady, other)
+    return ('none: '+str(none), 'steady: '+str(steady), 'other: '+str(other))
 
 def print_cycles(cycles):
     print "index", '\t', 'size'
@@ -59,11 +61,12 @@ def print_cycles(cycles):
 def average_cycles(cycles):
     return np.average(cycles, 0)
         
-def plot_data(data, nodes=None, w=10, h=5, fontsize=12, title = 'Node Heatmap'): # plot model.data (node states) 
-    plt.rcParams.update({'font.size': fontsize})
 
-    # set figure
-    fig, ax = plt.subplots(1,1, figsize=(w,h))
+
+def plot_data(data, ax,
+              nodes=None,
+              title = None
+             ): # plots model.data (node states) onto axis
 
     # select plot data
     plot = []
@@ -73,17 +76,55 @@ def plot_data(data, nodes=None, w=10, h=5, fontsize=12, title = 'Node Heatmap'):
         plot.append(bindata)
         
     # plot data
-    cmap=plt.cm.get_cmap('gray') # off (0) = black, on (1) = white
-    im = ax.imshow(plot, cmap=cmap)
+    cmap=mpl.cm.gray # off (0) = black, on (1) = white
+    norm = mpl.colors.Normalize(vmin=0, vmax=1) # make sure 0 is always mapped to white, 1 to black
+    im = ax.imshow(plot, cmap=cmap, norm=norm)
     ax.set_yticks(np.arange(len(labels)))
     ax.set_yticklabels(labels)
     ax.set_aspect('auto')
-    ax.set_title(title)
+    if title: ax.set_title(title)
     ax.set_xlabel('steps')
+    return im # return handle to the axes for stupid colour bar
+
+def plot_maps(datas, # array of model.data 
+              titles = [], # map titles in same order
+              nodes = [],  # nodes plotted across all maps
+              filename='map.png', 
+              suptitle='    Average Node State Heatmap', 
+              fontsize=16,
+              suptitlesize = 24,
+              h = 18, # inches
+              w = 20, # inches
+              left = 0.2,  # the left side of the subplots of the figure
+              right = 0.9,   # the right side of the subplots of the figure
+              bottom = 0.1,  # the bottom of the subplots of the figure
+              top = 0.95,     # the top of the subplots of the figure
+              wspace = 0.2,  # the amount of width reserved for space between subplots
+              hspace = 0.2,  # the amount of height reserved for space between subplots
+              dpi = 200
+             ): # sets up axes into subplot
+    plt.rcParams.update({'font.size': fontsize})
     
-    divider = make_axes_locatable(ax) # adding color bar here ...
-    cax = divider.append_axes('right', size='2%', pad='1%')
-    fig.colorbar(im, orientation = 'vertical', cax= cax) 
+    # setup plot
+    fig, axes = plt.subplots(len(datas),1, figsize=(w,len(datas)*h))#, figsize=(10,2))
+    axes = axes if not len(datas)==1 else [axes]    # plot axes
+   
+    if not titles: titles = range(1, len(datas)+1)
+    for data, ax, title in zip(datas, axes , titles ):
+        if not nodes: nodes = sorted(data.keys())
+        im = plot_data(data, ax, nodes = nodes, title=title)   
+        # add colour bar
+        divider = make_axes_locatable(ax)
+        cax = divider.append_axes('right', size='2%', pad='1%')
+        fig.colorbar(im, orientation = 'vertical', cax= cax)
+        
+    # adjust
+    plt.subplots_adjust(hspace=hspace, top=top, left=left, right=right, wspace=wspace, bottom=bottom)
+    fig.suptitle(suptitle, fontsize = suptitlesize)
+    
+    # show savedown
+    plt.show()
+    fig.savefig(filename, dpi=dpi)
         
 def knockout(definition, knockouts=[]):
     assert isinstance(knockouts, list), "takes list"
