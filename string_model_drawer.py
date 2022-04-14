@@ -1,22 +1,27 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
-
-
 def draw_edgelists(network, 
-                  highlight = [], 
-                  add_process = False, 
-                  add_mtb = False,
-                  node_colour = 'blue',
-                  process_colour = 'lightgreen', 
-                  mtb_colour = 'red', 
-                  highlight_colour='lightblue'):
+                   highlight = [], 
+                   add_process = False, 
+                   add_mtb = False,
+                   node_colour = 'blue',
+                   process_colour = 'lightgreen', 
+                   mtb_colour = 'red', 
+                   highlight_colour='lightblue',
+                   h = 10, 
+                   w = 20, 
+                   title='Network',
+                   title_size = 24,
+                   font_size = 16,
+                   node_size = 100,
+                   filename = 'network',
+                   dpi=200
+                  ):
 
     # create edgelist
-
     edges = []
     nodes = {}
-
     lines = open(network).readlines()[1:] # remove headers
     for line in lines: # edges from network file 
         line = line.split(',')
@@ -63,7 +68,6 @@ def draw_edgelists(network,
     nodes.update(add_nodes)
     
     # color highlight nodes
-    
     for node in nodes:     
         if node in highlight: nodes[node]=highlight_colour
 
@@ -71,17 +75,19 @@ def draw_edgelists(network,
     colorlist = nodes.values()
     
     # write/read edgelist
-    
     open("edgelist.txt", 'w+').write('\n'.join(edges))
     G=nx.read_edgelist('edgelist.txt')
 
-    # plot
-    
-    nx.draw(G, with_labels=True, node_size=100, font_color='white', font_size=16, nodelist=nodelist, node_color=colorlist)
-    plt.gcf().set_size_inches(20, 20)
+    # plot and savedown
+    nx.draw(G, 
+            with_labels=True, 
+            node_size=node_size, 
+            font_color='white', 
+            font_size=font_size, 
+            nodelist=nodelist, 
+            node_color=colorlist
+           )
+    plt.gcf().set_size_inches(w, h)
+    plt.gcf().suptitle(title, fontsize=title_size, color='white')
     plt.gcf().set_facecolor('grey')
-
-
-
-
-
+    plt.gcf().savefig(filename, dpi=dpi, facecolor='grey')
