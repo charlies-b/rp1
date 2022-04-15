@@ -6,7 +6,7 @@ warnings.filterwarnings("ignore")
 import boolean2 as b2
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-import string_model_builder_3 as builder
+import model_builder_3 as builder
 from numpy.ma import masked_equal
 import numpy as np
 from mpl_toolkits.axes_grid1.axes_divider import make_axes_locatable
